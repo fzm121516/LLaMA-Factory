@@ -16,7 +16,6 @@ unzip SynthScars.zip
 cp -r /data/LLaMA-Factory/SynthScars/train/images/ /data/LLaMA-Factory/data/synthscars/
 
 
-
 llamafactory-cli train \
     --stage sft \
     --do_train True \
@@ -28,8 +27,8 @@ llamafactory-cli train \
     --dataset_dir data \
     --dataset synthscars \
     --cutoff_len 2048 \
-    --learning_rate 0.0001 \
-    --num_train_epochs 3.0 \
+    --learning_rate 0.0003 \
+    --num_train_epochs 2.0 \
     --max_samples 100000 \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 8 \
@@ -40,7 +39,7 @@ llamafactory-cli train \
     --warmup_steps 0 \
     --packing False \
     --report_to none \
-    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-08-11-21-31 \
+    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-01-10-33 \
     --bf16 True \
     --plot_loss True \
     --trust_remote_code True \
@@ -49,5 +48,12 @@ llamafactory-cli train \
     --optim adamw_torch \
     --lora_rank 8 \
     --lora_alpha 16 \
-    --lora_dropout 0 \
-    --lora_target all
+    --lora_dropout 0.2 \
+    --pissa_init True \
+    --pissa_convert True \
+    --lora_target all 
+
+
+
+
+llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
