@@ -4,7 +4,7 @@ conda create --name loki --clone torch
 conda activate loki
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 pip install -e .
-pip install transformers==4.50.3
+pip install transformers==4.51.0
 
 conda activate torch
 pip install -e .
@@ -15,13 +15,11 @@ pip install modelscope
 modelscope download --model Qwen/Qwen2.5-VL-7B-Instruct --local_dir ./
 
 modelscope download --dataset AI-ModelScope/OpenVid-1M OpenVid_part100.zip --local_dir ./
-
-
-
+unzip OpenVid_part100.zip
+cp -r /data/mnt /data/LLaMA-Factory/data/OpenVid_part100/
 
 unzip SynthScars.zip
-
-cp -r /data/LLaMA-Factory/SynthScars/train/images/ /data/LLaMA-Factory/data/synthscars/
+cp -r /data/SynthScars/train/images /data/LLaMA-Factory/data/synthscars
 
 
 llamafactory-cli train \
@@ -33,7 +31,7 @@ llamafactory-cli train \
     --template qwen2_vl \
     --flash_attn auto \
     --dataset_dir data \
-    --dataset synthscars \
+    --dataset synthscars,OpenVid_part100 \
     --cutoff_len 2048 \
     --learning_rate 0.0001 \
     --num_train_epochs 2.0 \
@@ -47,7 +45,7 @@ llamafactory-cli train \
     --warmup_steps 100 \
     --packing False \
     --report_to none \
-    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-01-10-34 \
+    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-10-50-34 \
     --bf16 True \
     --plot_loss True \
     --trust_remote_code True \

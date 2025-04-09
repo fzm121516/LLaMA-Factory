@@ -66,7 +66,7 @@ for video, video_path in video_paths.items():
     })
 
 # 写入sharegpt格式的json文件
-with open("OpenVid_part100.json", "w", encoding="utf-8") as f:
+with open("/data/LLaMA-Factory/data/OpenVid_part100.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
 print("转换完成 ✅")

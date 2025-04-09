@@ -20,7 +20,7 @@ for item in data:
         },
         {
             "role": "assistant",
-            "content": f"Yes. {caption.strip()}"
+            "content": f"Yes. {caption}"
         }
     ]
     # 第二组提示词：not from the real world
@@ -31,7 +31,7 @@ for item in data:
         },
         {
             "role": "assistant",
-            "content": f"No. {caption.strip()}"
+            "content": f"No. {caption}"
         }
     ]
 
@@ -49,7 +49,7 @@ for item in data:
 
 
 # 写入 sharegpt 格式的 json 文件
-with open("synthscars.json", "w", encoding="utf-8") as f:
+with open("/data/LLaMA-Factory/data/synthscars.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
 print("转换完成 ✅")
