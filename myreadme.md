@@ -2,13 +2,21 @@ apt install tmux
 
 conda create --name loki --clone torch
 conda activate loki
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 pip install -e .
 pip install transformers==4.50.3
-
 
 conda activate torch
 pip install -e .
 llamafactory-cli version
+
+pip install modelscope
+
+modelscope download --model Qwen/Qwen2.5-VL-7B-Instruct --local_dir ./
+
+modelscope download --dataset AI-ModelScope/OpenVid-1M OpenVid_part100.zip --local_dir ./
+
+
 
 
 unzip SynthScars.zip
@@ -55,7 +63,7 @@ llamafactory-cli train \
 
 
 
-llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft2800.yaml
+llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft4000.yaml
 
 
 llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
