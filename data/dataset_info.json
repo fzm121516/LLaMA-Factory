@@ -38,6 +38,20 @@
       "assistant_tag": "assistant"
     }
   },
+  "mllm_demo2": {
+    "file_name": "mllm_demo2.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "videos": "videos"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
   "synthscars": {
     "file_name": "synthscars.json",
     "formatting": "sharegpt",
@@ -54,6 +68,20 @@
   },
   "OpenVid_part100": {
     "file_name": "OpenVid_part100.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "videos": "videos"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
+  "ipv": {
+    "file_name": "ipv.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",

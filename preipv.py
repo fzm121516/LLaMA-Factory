@@ -1,39 +1,18 @@
 import json
-import csv
-import os
 
-# 读取OpenVid_part100.csv获取视频信息
-video_paths = {}
-with open("OpenVid_part100.csv", "r", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        video = row["video"]
-        video_path = row["video_path"]  # 获取文件名
-        video_paths[video] = f"OpenVid_part100/{video_path}"
-
-# 读取OpenVid-1M.csv获取caption信息
-captions = {}
-with open("OpenVid-1M.csv", "r", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        video = row["video"]
-        caption = row["caption"]
-        captions[video] = caption
+# 读取本地 JSON 文件
+with open("openqa_answer.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
 output = []
-n = 899  # 设置你想要的前n个视频数量
 
-# 遍历前n个视频
-for i, (video, video_path) in enumerate(video_paths.items()):
-    if i >= n:
-        break
-        
-    # 获取对应的caption
-    caption = captions.get(video, "").strip()
+for video_name, content in data.items():
+    primary_answer = content["primary_answer"]
+    alternative_answers = content["alternative_answers"]
     
-    if not caption:
-        continue  # 如果没有caption则跳过
-        
+    # 使用视频文件名作为图像路径（假设扩展名改为.jpg或.png）
+    video_path = f"impossible_videos/{video_name}"
+    
     # 第一组提示词：AI-generated
     messages_ai = [
         {
@@ -42,7 +21,7 @@ for i, (video, video_path) in enumerate(video_paths.items()):
         },
         {
             "role": "assistant",
-            "content": f"No. {caption}"
+            "content": f"Yes. {primary_answer}"
         }
     ]
     
@@ -54,11 +33,10 @@ for i, (video, video_path) in enumerate(video_paths.items()):
         },
         {
             "role": "assistant",
-            "content": f"Yes. {caption}"
+            "content": f"No. {primary_answer}"
         }
     ]
-
-    # 添加到输出
+    
     output.append({
         "messages": messages_ai,
         "videos": [video_path]
@@ -69,8 +47,9 @@ for i, (video, video_path) in enumerate(video_paths.items()):
         "videos": [video_path]
     })
 
-# 写入sharegpt格式的json文件
-with open("/data/LLaMA-Factory/data/OpenVid_part100.json", "w", encoding="utf-8") as f:
+
+# 写入 sharegpt 格式的 json 文件
+with open("/data/LLaMA-Factory/data/ipv.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
 print("转换完成 ✅")

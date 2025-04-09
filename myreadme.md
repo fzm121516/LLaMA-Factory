@@ -25,6 +25,10 @@ cp -r /data/SynthScars/train/images /data/LLaMA-Factory/data/synthscars
 unzip media_data.zip
 cp -r /data/loki_media_aggregate /data/LOKI/media_data
 
+unzip impossible_videos.zip
+cp -r /data/impossible_videos /data/LLaMA-Factory/data/impossible_videos
+
+
 
 
 llamafactory-cli train \
@@ -35,7 +39,7 @@ llamafactory-cli train \
     --template qwen2_vl \
     --flash_attn auto \
     --dataset_dir data \
-    --dataset synthscars,OpenVid_part100 \
+    --dataset ipv,OpenVid_part100 \
     --cutoff_len 2048 \
     --learning_rate 0.0001 \
     --num_train_epochs 3.0 \
@@ -49,7 +53,7 @@ llamafactory-cli train \
     --warmup_steps 300 \
     --packing False \
     --report_to none \
-    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-10-02-26-34 \
+    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-10-02-26-66 \
     --bf16 True \
     --plot_loss True \
     --trust_remote_code True \
@@ -62,9 +66,10 @@ llamafactory-cli train \
     --pissa_convert True \
     --lora_target all \
     --video_max_pixels 16384 \
-    --preprocessing_num_workers 2 \
+    --preprocessing_num_workers 16 \
     --preprocessing_batch_size 1 \
     --tokenized_path /data/LLaMA-Factory/tokenized
+
 
 
 llamafactory-cli train examples/train_lora/qwen25vl_lora_sft.yaml
