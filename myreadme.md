@@ -13,6 +13,8 @@ llamafactory-cli version
 
 pip install modelscope
 
+modelscope download --model AI-ModelScope/mochi-1-preview --local_dir ./
+
 modelscope download --model Qwen/Qwen2.5-VL-7B-Instruct --local_dir ./
 
 modelscope download --dataset AI-ModelScope/OpenVid-1M OpenVid_part100.zip --local_dir ./
