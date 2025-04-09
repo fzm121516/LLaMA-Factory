@@ -21,6 +21,10 @@ cp -r /data/mnt /data/LLaMA-Factory/data/OpenVid_part100/
 unzip SynthScars.zip
 cp -r /data/SynthScars/train/images /data/LLaMA-Factory/data/synthscars
 
+unzip media_data.zip
+cp -r /data/loki_media_aggregate /data/LOKI/media_data
+
+
 
 llamafactory-cli train \
     --stage sft \
@@ -31,18 +35,18 @@ llamafactory-cli train \
     --template qwen2_vl \
     --flash_attn auto \
     --dataset_dir data \
-    --dataset synthscars,OpenVid_part100 \
+    --dataset OpenVid_part100 \
     --cutoff_len 2048 \
     --learning_rate 0.0001 \
-    --num_train_epochs 2.0 \
+    --num_train_epochs 3.0 \
     --max_samples 100000 \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 8 \
     --lr_scheduler_type cosine \
     --max_grad_norm 1.0 \
     --logging_steps 5 \
-    --save_steps 100 \
-    --warmup_steps 100 \
+    --save_steps 500 \
+    --warmup_steps 300 \
     --packing False \
     --report_to none \
     --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-10-50-34 \
@@ -50,18 +54,17 @@ llamafactory-cli train \
     --plot_loss True \
     --trust_remote_code True \
     --ddp_timeout 180000000 \
-    --include_num_input_tokens_seen True \
     --optim adamw_torch \
     --lora_rank 8 \
     --lora_alpha 16 \
     --lora_dropout 0.2 \
     --pissa_init True \
     --pissa_convert True \
-    --lora_target all 
+    --lora_target all \
+    --tokenized_path /data/LLaMA-Factory/tokenized
 
+llamafactory-cli train examples/train_lora/qwen25vl_lora_sft.yaml
 
-
-llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft4000.yaml
 
 
 llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
