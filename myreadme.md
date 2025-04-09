@@ -74,8 +74,4 @@ llamafactory-cli train \
 
 
 
-llamafactory-cli train examples/train_lora/qwen25vl_lora_sft.yaml
-
-
-
 llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
