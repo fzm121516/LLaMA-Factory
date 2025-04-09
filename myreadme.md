@@ -25,17 +25,15 @@ unzip media_data.zip
 cp -r /data/loki_media_aggregate /data/LOKI/media_data
 
 
-
 llamafactory-cli train \
     --stage sft \
     --do_train True \
     --model_name_or_path /data/Qwen2.5-VL-7B-Instruct \
-    --preprocessing_num_workers 16 \
     --finetuning_type lora \
     --template qwen2_vl \
     --flash_attn auto \
     --dataset_dir data \
-    --dataset OpenVid_part100 \
+    --dataset OpenVid_part100,synthscars \
     --cutoff_len 2048 \
     --learning_rate 0.0001 \
     --num_train_epochs 3.0 \
@@ -49,7 +47,7 @@ llamafactory-cli train \
     --warmup_steps 300 \
     --packing False \
     --report_to none \
-    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-10-50-34 \
+    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-10-02-26-34 \
     --bf16 True \
     --plot_loss True \
     --trust_remote_code True \
@@ -61,7 +59,12 @@ llamafactory-cli train \
     --pissa_init True \
     --pissa_convert True \
     --lora_target all \
+    --video_max_pixels 16384 \
+    --preprocessing_num_workers 4 \
+    --preprocessing_batch_size 1 \
     --tokenized_path /data/LLaMA-Factory/tokenized
+
+
 
 llamafactory-cli train examples/train_lora/qwen25vl_lora_sft.yaml
 
