@@ -27,7 +27,7 @@ llamafactory-cli train \
     --dataset_dir data \
     --dataset synthscars \
     --cutoff_len 2048 \
-    --learning_rate 0.0003 \
+    --learning_rate 0.0001 \
     --num_train_epochs 2.0 \
     --max_samples 100000 \
     --per_device_train_batch_size 1 \
@@ -36,10 +36,10 @@ llamafactory-cli train \
     --max_grad_norm 1.0 \
     --logging_steps 5 \
     --save_steps 100 \
-    --warmup_steps 0 \
+    --warmup_steps 100 \
     --packing False \
     --report_to none \
-    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-01-10-33 \
+    --output_dir saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-09-01-10-34 \
     --bf16 True \
     --plot_loss True \
     --trust_remote_code True \
@@ -54,6 +54,8 @@ llamafactory-cli train \
     --lora_target all 
 
 
+
+llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
 
 
 llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft.yaml
