@@ -1,4 +1,6 @@
 apt install tmux
+pip install flash_attn-2.7.4.post1+cu12torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+
 
 conda create --name loki --clone torch
 conda activate loki
