@@ -150,7 +150,7 @@ llamafactory-cli train \
     --flash_attn auto \
     --dataset_dir data \
     --dataset ipv,OpenVid_part100,mc \
-    --cutoff_len 2048 \
+    --cutoff_len 16384 \
     --learning_rate 0.0001 \
     --num_train_epochs 3.0 \
     --max_samples 10000 \
@@ -172,7 +172,7 @@ llamafactory-cli train \
     --optim adamw_torch \
     --freeze_trainable_layers 1 \
     --freeze_trainable_modules all \
-    --preprocessing_num_workers 16 \
+    --preprocessing_num_workers 11 \
     --preprocessing_batch_size 1 \
     --tokenized_path /data/LLaMA-Factory/tokenized2
 
