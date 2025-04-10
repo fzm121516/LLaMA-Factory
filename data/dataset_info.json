@@ -80,6 +80,20 @@
       "assistant_tag": "assistant"
     }
   },
+  "mc": {
+    "file_name": "mc.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "videos": "videos"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
   "ipv": {
     "file_name": "ipv.json",
     "formatting": "sharegpt",
