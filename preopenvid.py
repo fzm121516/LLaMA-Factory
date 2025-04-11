@@ -42,10 +42,10 @@ for i, (video, video_path) in enumerate(video_paths.items()):
         },
         {
             "role": "assistant",
-            "content": f"No. {caption}"
+            # "content": f"No. {caption}"
+            "content": f"No. This video is not AI-generated. {caption} "
         }
     ]
-    
     # 第二组提示词：not from the real world
     messages_not_real = [
         {
@@ -54,7 +54,8 @@ for i, (video, video_path) in enumerate(video_paths.items()):
         },
         {
             "role": "assistant",
-            "content": f"Yes. {caption}"
+            # "content": f"Yes. {caption}"
+            "content": f"Yes. This video is from the real world. {caption}"
         }
     ]
 

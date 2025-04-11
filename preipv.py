@@ -21,7 +21,8 @@ for video_name, content in data.items():
         },
         {
             "role": "assistant",
-            "content": f"Yes. {primary_answer}"
+            # "content": f"Yes. {primary_answer}"
+            "content": f"Yes. This video contains logic inconsistency and is AI-generated. {primary_answer}"
         }
     ]
     
@@ -33,7 +34,8 @@ for video_name, content in data.items():
         },
         {
             "role": "assistant",
-            "content": f"No. {primary_answer}"
+            # "content": f"No. {primary_answer}"
+            "content": f"No. This video contains logic inconsistency and is not from the real world. {primary_answer}"
         }
     ]
     
