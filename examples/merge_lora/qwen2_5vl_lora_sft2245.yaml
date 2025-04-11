@@ -2,12 +2,12 @@
 
 ### model
 model_name_or_path: /data/Qwen2.5-VL-7B-Instruct
-adapter_name_or_path: /data/LLaMA-Factory/saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-10-06-32-66/checkpoint-2245
+adapter_name_or_path: /data/LLaMA-Factory/saves/Qwen2.5-VL-7B-Instruct/lora/train_2025-04-11-09-32-66/checkpoint-2245
 template: qwen2_vl
 trust_remote_code: true
 
 ### export
-export_dir: output/qwen2_5_vl_lora_sft_2245
+export_dir: output/qwen2_5_vl_lora_sft_2245_041101
 export_size: 5
 export_device: cpu
 export_legacy_format: false

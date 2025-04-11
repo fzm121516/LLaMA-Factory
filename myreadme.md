@@ -266,3 +266,5 @@ llamafactory-cli train \
     --preprocessing_batch_size 1 \
     --additional_target merger \
     --tokenized_path /data/LLaMA-Factory/tokenized041101
+
+    llamafactory-cli export examples/merge_lora/qwen2_5vl_lora_sft2245.yaml
